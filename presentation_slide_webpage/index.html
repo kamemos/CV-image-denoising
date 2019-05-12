@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="http://example.com/image.png" r>
+					<h1>Computer Vision</h1>
+					<p><i style="color:#ffc400">super resolution image</i></p>
+				</section>
+				<section>
+					<h1 style='color:#ff9100'>Members</h1>
+					<ul>
+						<li>Chayanont Eamwiwat <i style="color:#ffc400">5830083121</i></li>
+						<li>Burin Naowarat <i style="color:#ffc400">5831034631</i></li>
+						<li>Tharn Phongsavaree <i style="color:#ffc400">5831029521</i></li>
+					</ul>
+				</section>
+				<section>
+					<h2 style='color:#ff9100'>Our objectives</h2>
+					<ul>
+						<li>Enhance image to be more aesthetic and sharpness</li>
+						<li>Improve rocognization text in image</li>
+						<li>Can utilize image with higher performance</li>
+					</ul>
+					<div style="display: flex; height: 50%; justify-content: center; align-items: center;">
+						<img src="assets/pic2.png" style="height:300px;width:400px">
+						<i class="fa fa-arrow-right fa-2x" style="padding:30px;color:red;"></i>
+						<img src="assets/pic1.png" style="height:300px;width:400px"/>
+					</div>
+				</section>
+				<section>
+					<h2 style='color:#ff9100'>Dataset</h2>
+					<p>We used our generated images.  Images contains a single line of text in various font family,font size, words, background colors, words colors, and position.</p>
+					<img src="assets/sample.png" ></img>
+				</section>
+				<section>
+					<h2 style='color:#ff9100'>Dataset (con.)</h2>
+					<ul>
+						<li>training set <i style="color:#ffc400">(30k)</i></li>
+						<li>validation set <i style="color:#ffc400">(20k)</i></li>
+						<li>training set <i style="color:#ffc400">(20k)</i></li>
+					</ul>
+					<a href="https://drive.google.com/file/d/1-QSx_GyGNWSUI75rbZIInlqejriOFE8Y/view?usp=sharing">
+						<p><i class="fa fa-download fa-2x" style="padding:30px;"></i>download dataset</p>
+					</a>
+				</section>
+				<section>
+					<h3>Model 1</h3>
+					<p><i style="color:#ff9100">(SRCNN)</i></p>
+					<img src="assets/model1.png" ></img>
+				</section>
+				<section>
+					<h3>Model 2</h3> 
+					<p><i style="color:#ff9100">(CNN)</i></p>
+					<img src="assets/model2.png" ></img>
+				</section>
+				<section>
+					<h3>Model 3</h3>
+					<p><i style="color:#ff9100">(Skip pooling + Convolution and Deconvolution)</i></p>
+					<img src="assets/model3_v3.png" ></img>
+				</section>
+				<section>
+					<h2 style='color:#ff9100'>Evaluation</h2>
+					<table>
+						<thead>
+							<tr>
+								<td><i style="color:#ffc400">model</td>
+								<td><i style="color:#ffc400">mse</i></td>
+								<td><i style="color:#ffc400">mae</i></td>
+								<td><i style="color:#ffc400">psnr</i></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><i style="color:#ffc400">do nothing</i></td>
+								<td>1330.621</td>
+								<td>12.0985</td>
+								<td>17.926</td>
+							</tr>
+							<tr>
+								<td><i style="color:#ffc400">SRCNN</i></td>
+								<td>583.965</td>
+								<td>8.952</td>
+								<td>21.784</td>
+							</tr>
+							<tr>
+								<td><i style="color:#ffc400">model2</i></td>
+								<td>334.135</td>
+								<td>6.053</td>
+								<td>24.239</td>
+							</tr>
+							<tr>
+								<td><i style="color:#ffc400">model3</i></td>
+								<td>100.618</td>
+								<td>3.096</td>
+								<td>29.728</td>
+							</tr>	
+						</tbody>
+					</table>
+					<p style='color:#ff9100'>Table :  All blur types in gray scale</p>
+				</section>
+				<section>
+					<h3 style='color:#ff9100'>Conclusion</h3>
+					<p>The best model is model3 which has PSNR=29.728. This model outperforms because it contains more and complex layers than other model since
+						we pass the information from lower layer to the top layer. Hence, the model3 can capture more information than other model.
+					</p>
+				</section>
+				<section>
+					<p style='color:#ffa733'>Example of results (gray-scale image)</p>
+					<img src='assets/sample_gray.png' style="width:800px;height: 450px"></img>
+					<p>fig : left<i style="color:#ffc400">(blur)</i> center<i style="color:#ffc400">(predict)</i> right<i style="color:#ffc400">(original)</i></p>
+				</section>
+				<section>
+					<h3 style='color:#ffa733'>Example of results (rgb image)</h3>
+					<img src='assets/sample_rgb.png' style="width:800px;height: 450px"></img>
+					<p>fig : left<i style="color:#ffc400">(blur)</i> center<i style="color:#ffc400">(predict)</i> right<i style="color:#ffc400">(original)</i></p>
+				</section>
+				<section>
+					<h3 style='color:#ffa733'>current limitations</h3>
+					<ol>
+						<li>Currently, we are still working on generated dataset since we don't have real-world data.</li>
+						<li>We have train and test on our environmnet as font family, font size, and backgroud were limited.</li>
+						<li>There are other techniques and models that we haven't tried.</li>
+						<li>Still dont't have the program for common user to use.</li>
+					</ol>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
